@@ -1,0 +1,19 @@
+
+
+file = open("C:/airports.csv",mode = "rt",encoding="utf-8")
+line = file.readline()
+while line:
+	line = line.replace("\"","")
+	data = line.split(",")
+	if data[2] == "small_airport":
+		SMALL_AIRPORT = SMALL_AIRPORT + 1
+	elif data[2] == "large_airport":
+		LARGE_AIRPORT = LARGE_AIRPORT + 1
+	else:
+		pass
+	
+	line = file.readline() 
+print(SMALL_AIRPORT)
+print(LARGE_AIRPORT)
+
+

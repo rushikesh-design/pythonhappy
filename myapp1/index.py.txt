@@ -1,0 +1,15 @@
+import requests
+from bs4 import BeautifulSoup
+request = requests.get("https://www.amazon.in/dp/B003LSOH8E/ref=sspa_dk_left_sx_aax_0?psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFKVkM0VUxKNDNORjYmZW5jcnlwdGVkSWQ9QTA3NjQ2NTYyQ1dUUzAyQks5RTlQJmVuY3J5cHRlZEFkSWQ9QTAyNjEzMDcxWk84TzIxTUhERlFSJndpZGdldE5hbWU9c3Bfc2VhcmNoX2xlZnRfc2hhcmVkJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==")
+tree = BeautifulSoup(request.text,features="lxml")
+#print(tree.title)
+result = tree.find("span",{"class":"a-size-medium a-color-price priceBlockBuyingPriceString"})
+print (result.text)
+
+request = requests.get("https://www.flipkart.com/casio-ctk-240-digital-portable-keyboard/p/itmefgnpzuszxch4?pid=MKDFGSY8AWMF92UK&lid=LSTMKDFGSY8AWMF92UKXXJXWE&marketplace=FLIPKART&srno=s_1_1&otracker=search&otracker1=search&fm=SEARCH&iid=6005131d-9c62-49e4-8e6d-a3420b03b73a.MKDFGSY8AWMF92UK.SEARCH&ppt=sp&ppn=sp&ssid=npnsahqfm80000001580289909752&qH=3d0c4e8e7ccdfb34")
+tree = BeautifulSoup(request.text,features="lxml")
+#print(tree.title)
+result1 = tree.find("div",{"class":"_1vC4OE _3qQ9m1"})
+print (result1.text)
+
+print(int(result.text[2:7].replace(",",""))-int(result1.text[1:].replace(",","")))
